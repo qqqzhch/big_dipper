@@ -50,6 +50,7 @@ export default class Validator extends Component{
     }
 
     getUserDelegations() {
+        console.log('- - -')
         if (this.state.user && this.props.validator && this.props.validator.address) {
             Meteor.call('accounts.getDelegation', this.state.user, this.props.validator.operator_address, (err, res) => {
                 if (res && res.shares > 0) {
@@ -218,7 +219,7 @@ export default class Validator extends Component{
                             <Row>
                                 <Col xs={12}><StatusBadge bondingStatus={this.props.validator.status} jailed={this.props.validator.jailed} /></Col>
                                 <Col sm={4} className="label"><T>validators.operatorAddress</T></Col>
-                                <Col sm={8} className="value address" data-operator-address={this.props.validator.operator_address}>{this.props.validator.operator_address}</Col>
+                                <Col sm={8} className="value address" data-operator-address={this.props.validator.address}>{this.props.validator.address}</Col>
                                 <Col sm={4} className="label"><T>validators.selfDelegationAddress</T></Col>
                                 <Col sm={8} className="value address" data-delegator-address={this.props.validator.delegator_address}><Link to={"/account/"+this.props.validator.delegator_address}>{this.props.validator.delegator_address}</Link></Col>
                                 <Col sm={4} className="label"><T>validators.commissionRate</T></Col>
@@ -259,13 +260,13 @@ export default class Validator extends Component{
                       </Card>
                     <Nav pills>
                             <NavItem>
-                        <NavLink tag={Link} to={"/validator/"+this.props.validator.operator_address} active={!(this.props.location.pathname.match(/(delegations|transactions)/gm))}><T>validators.powerChange</T></NavLink>
+                        <NavLink tag={Link} to={"/validator/"+this.props.validator.address} active={!(this.props.location.pathname.match(/(delegations|transactions)/gm))}><T>validators.powerChange</T></NavLink>
                       </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} to={"/validator/"+this.props.validator.operator_address+"/delegations"} active={(this.props.location.pathname.match(/delegations/gm) && this.props.location.pathname.match(/delegations/gm).length > 0)}><T>validators.delegations</T></NavLink>
+                                <NavLink tag={Link} to={"/validator/"+this.props.validator.address+"/delegations"} active={(this.props.location.pathname.match(/delegations/gm) && this.props.location.pathname.match(/delegations/gm).length > 0)}><T>validators.delegations</T></NavLink>
                       </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} to={"/validator/"+this.props.validator.operator_address+"/transactions"} active={(this.props.location.pathname.match(/transactions/gm) && this.props.location.pathname.match(/transactions/gm).length > 0)}><T>validators.transactions</T></NavLink>
+                                <NavLink tag={Link} to={"/validator/"+this.props.validator.address+"/transactions"} active={(this.props.location.pathname.match(/transactions/gm) && this.props.location.pathname.match(/transactions/gm).length > 0)}><T>validators.transactions</T></NavLink>
                       </NavItem>
                         </Nav>
                         <Switch>

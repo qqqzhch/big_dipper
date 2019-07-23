@@ -165,10 +165,13 @@ Meteor.startup(function(){
     if (Meteor.isDevelopment){
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
         import DEFAULTSETTINGSJSON from '../default_settings.json'
+        // console.log(DEFAULTSETTINGSJSON)
         Object.keys(DEFAULTSETTINGSJSON).forEach((key) => {
             if (Meteor.settings[key] == undefined)
                 throw Error(`${key} is missing from settings`);
+            // console.log(key,DEFAULTSETTINGSJSON[key])
             Object.keys(DEFAULTSETTINGSJSON[key]).forEach((param) => {
+                // console.log(param)
                 if (Meteor.settings[key][param] == undefined)
                     throw Error(`${key}.${param} is missing from settings`);
             })

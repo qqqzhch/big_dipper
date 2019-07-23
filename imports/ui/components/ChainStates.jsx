@@ -11,7 +11,7 @@ const T = i18n.createComponent();
 export default class ChainStates extends Component{
     constructor(props){
         super(props);
-
+       console.log('*****')
         if (Meteor.isServer){
             let data = {}
             if (this.props.chainStates.communityPool){

@@ -12,7 +12,7 @@ export default ChainStatesContainer = withTracker((props) => {
 
     let chainStatesExist
     let coinStatsExist
-
+    console.log('****',chainStates);
     if (Meteor.isClient){
         chainStatesHandle = Meteor.subscribe('chainStates.latest');
         loading = !chainStatesHandle.ready();

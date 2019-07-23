@@ -27,8 +27,8 @@ export default class TopValidators extends Component{
                     validators: validators.map((validator, i ) => {
                         return <tr key={i}>
                             <td><Link to={"/validator/"+validator.address}>
-                                <Avatar moniker={validator.description.moniker} profileUrl={validator.profile_url} address={validator.address} list={true} />
-                                {validator.description.moniker}
+                                {/* <Avatar moniker={validator.description.moniker} profileUrl={validator.profile_url} address={validator.address} list={true} /> */}
+                                {validator.address}
                             </Link></td>
                             <td className="voting-power">{numbro(validator.voting_power).format('0,0')}</td>
                             <td><Progress animated value={validator.uptime}>{validator.uptime?validator.uptime.toFixed(2):0}%</Progress></td>

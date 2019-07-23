@@ -1,27 +1,29 @@
 {
     "public":{
-        "chainName": "Cosmos Testnet",
-        "chainId": "{Chain ID}",
+        "chainName": "Lambda Testnet",
+        "chainId": "lambda-hub-test",
         "gtm": "{Add your Google Tag Manager ID here}",
         "slashingWindow": 10000,
         "uptimeWindow": 250,
         "initialPageSize": 30,
-        "bech32PrefixAccAddr": "cosmos",
-        "bech32PrefixAccPub": "cosmospub",
-        "bech32PrefixValAddr": "cosmosvaloper",
-        "bech32PrefixValPub": "cosmosvaloperpub",
-        "bech32PrefixConsAddr": "cosmosvalcons",
-        "bech32PrefixConsPub": "cosmosvalconspub",
-        "stakingDenom": "ATOM",
-        "mintingDenom": "uatom",
+        "bech32PrefixAccAddr": "lambda",
+        "bech32PrefixAccPub": "lambdapub",
+        "bech32PrefixValAddr": "lambdavaloper",
+        "bech32PrefixValPub": "lambdavaloperpub",
+        "bech32PrefixConsAddr": "lambdavalcons",
+        "bech32PrefixConsPub": "lambdavalconspub",
+        "stakingDenom": "LAMB",
+        "mintingDenom": "lamb",
         "stakingFraction": 1000000,
         "gasPrice": 0.02,
-        "coingeckoId": "cosmos"
+        "coingeckoId": "lambda"
     },
-    "genesisFile": "{Replace the address of the genesis file of the chain}",
+    "genesisFile": {
+
+    },
     "remote":{
-        "rpc":"https://gaia-seeds.interblock.io",
-        "lcd":"https://gaia-seeds.interblock.io:1317"
+        "rpc":"http://39.106.139.11:13657",
+        "lcd":"http://39.106.139.11:13659"
     },
     "debug": {
         "startTimer": true,

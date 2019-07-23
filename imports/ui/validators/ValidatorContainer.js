@@ -10,7 +10,7 @@ export default ValidatorDetailsContainer = withTracker((props) => {
     let validatorHandle;
     let validatorsHandle;
     let loading = true;
-
+    console.log('*********************')
     if (Meteor.isClient){
         chainHandle = Meteor.subscribe('chain.status');
         validatorsHandle = Meteor.subscribe('validators.all', props.address);

@@ -68,6 +68,7 @@ export default class Validators extends Component{
     }
 
     render() {
+        console.log('-----',this.state)
         let title = <T>validators.active</T>;
         let desc = <T>validators.listOfActive</T>;
         if (this.props.inactive){

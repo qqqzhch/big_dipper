@@ -53,7 +53,9 @@ Meteor.methods({
             chain.latestBlockTime = status.sync_info.latest_block_time;
 
             let latestState = ChainStates.findOne({}, {sort: {height: -1}})
-            if (latestState.height >= chain.latestBlockHeight) {
+            console.log('latestState',latestState)
+            console.log('chain',chain)
+            if (latestState!=undefined&&latestState.height >= chain.latestBlockHeight) {
                 return `no updates (getting block ${chain.latestBlockHeight} at block ${latestState.height})`
             }
 
@@ -157,7 +159,8 @@ Meteor.methods({
         else{
             console.log('=== Start processing genesis file ===');
             let response = HTTP.get(Meteor.settings.genesisFile);
-            let genesis = JSON.parse(response.content);
+            let genesis = JSON.parse(response.content).result.genesis;
+            console.log('genesis.app_state',genesis)
             let chainParams = {
                 chainId: genesis.chain_id,
                 genesisTime: genesis.genesis_time,
@@ -170,10 +173,10 @@ Meteor.methods({
                 },
                 mint: genesis.app_state.mint,
                 distr: {
-                    communityTax: genesis.app_state.distr.community_tax,
-                    baseProposerReward: genesis.app_state.distr.base_proposer_reward,
-                    bonusProposerReward: genesis.app_state.distr.bonus_proposer_reward,
-                    withdrawAddrEnabled: genesis.app_state.distr.withdraw_addr_enabled
+                    communityTax: genesis.app_state.distribution.community_tax,
+                    baseProposerReward: genesis.app_state.distribution.base_proposer_reward,
+                    bonusProposerReward: genesis.app_state.distribution.bonus_proposer_reward,
+                    withdrawAddrEnabled: genesis.app_state.distribution.withdraw_addr_enabled
                 },
                 gov: {
                     startingProposalId: genesis.app_state.gov.starting_proposal_id,
